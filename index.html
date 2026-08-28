@@ -3,1229 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTs Wathoniyah - Madrasah Tsanawiyah Wathoniyah</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-green: #1e5128;
-            --secondary-green: #4e9f3d;
-            --accent-gold: #d8e9a8;
-            --light-green: #f0f7e6;
-            --dark-green: #0d2818;
-            --white: #ffffff;
-            --text-dark: #2d3748;
-            --text-light: #718096;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        /* Top Bar */
-        .top-bar {
-            background: var(--dark-green);
-            color: white;
-            padding: 0.5rem 0;
-            font-size: 0.9rem;
-        }
-
-        .top-bar-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .top-bar-info {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .top-bar-info span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .top-bar-social {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .top-bar-social a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .top-bar-social a:hover {
-            color: var(--accent-gold);
-        }
-
-        /* Header */
-        header {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-        }
-
-        .logo-text h1 {
-            font-size: 1.5rem;
-            color: var(--primary-green);
-            margin-bottom: 0.2rem;
-        }
-
-        .logo-text p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        /* Navigation */
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            transition: all 0.3s;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--secondary-green);
-            transition: width 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--primary-green);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary-green);
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: 100px;
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.2s backwards;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.4s backwards;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary-green);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary-green);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary-green);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        .title-decoration {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
-            margin: 1rem auto;
-            border-radius: 2px;
-        }
-
-        /* Sambutan Section */
-        .sambutan {
-            background: var(--light-green);
-        }
-
-        .sambutan-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .sambutan-image {
-            text-align: center;
-        }
-
-        .kepsek-photo {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 6rem;
-            margin: 0 auto;
-            box-shadow: var(--shadow);
-        }
-
-        .sambutan-text h3 {
-            font-size: 1.8rem;
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-        }
-
-        .sambutan-text .jabatan {
-            color: var(--secondary-green);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .sambutan-text p {
-            color: var(--text-dark);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        /* Profil Section */
-        .profil-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .profil-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-            text-align: center;
-        }
-
-        .profil-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .profil-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            margin: 0 auto 1.5rem;
-        }
-
-        .profil-card h3 {
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .profil-card ul {
-            list-style: none;
-            text-align: left;
-        }
-
-        .profil-card ul li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .profil-card ul li::before {
-            content: '?';
-            position: absolute;
-            left: 0;
-            color: var(--secondary-green);
-            font-weight: bold;
-        }
-
-        /* Program Unggulan */
-        .program {
-            background: var(--light-green);
-        }
-
-        .program-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .program-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-
-        .program-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .program-image {
-            height: 180px;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-        }
-
-        .program-card:nth-child(2) .program-image {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .program-card:nth-child(3) .program-image {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .program-card:nth-child(4) .program-image {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-        }
-
-        .program-content {
-            padding: 1.5rem;
-        }
-
-        .program-content h3 {
-            color: var(--primary-green);
-            margin-bottom: 0.5rem;
-        }
-
-        .program-content p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Berita Section */
-        .berita-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .berita-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-
-        .berita-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .berita-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .berita-content {
-            padding: 1.5rem;
-        }
-
-        .berita-date {
-            color: var(--secondary-green);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .berita-content h3 {
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .berita-content p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .read-more {
-            color: var(--secondary-green);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s;
-        }
-
-        .read-more:hover {
-            gap: 1rem;
-        }
-
-        /* Galeri Section */
-        .galeri {
-            background: var(--light-green);
-        }
-
-        .galeri-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .galeri-item {
-            height: 250px;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            transition: transform 0.3s;
-        }
-
-        .galeri-item:hover {
-            transform: scale(1.05);
-        }
-
-        .galeri-item::after {
-            content: attr(data-title);
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 1rem;
-            font-size: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-
-        .galeri-item:hover::after {
-            transform: translateY(0);
-        }
-
-        /* Kontak Section */
-        .kontak-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .kontak-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .kontak-item {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-
-        .kontak-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .kontak-text h4 {
-            color: var(--primary-green);
-            margin-bottom: 0.3rem;
-        }
-
-        .kontak-text p {
-            color: var(--text-light);
-        }
-
-        .kontak-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--primary-green);
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            outline: none;
-            transition: border-color 0.3s;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--secondary-green);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-green);
-            color: white;
-            padding: 3rem 2rem 1rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--accent-gold);
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent-gold);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .sambutan-content {
-                grid-template-columns: 1fr;
-            }
-
-            .kontak-grid {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: var(--shadow);
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .top-bar-info {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero h2 {
-                font-size: 1.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <title>MTs Wathoniyah Gintung Lor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-content">
-            <div class="top-bar-info">
-                <span><i class="fas fa-phone"></i> (021) 1234-5678</span>
-                <span><i class="fas fa-envelope"></i> info@mtswathoniyah.sch.id</span>
-                <span><i class="fas fa-map-marker-alt"></i> Jl. Pendidikan No. 123</span>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <div class="bg-blue-900 text-white text-xs py-2 px-4 hidden md:block">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span><i class="fas fa-phone-alt mr-2 text-emerald-400"></i> +62 896-6550-3999</span>
+                <span><i class="fas fa-envelope mr-2 text-emerald-400"></i> info@mtswathoniyahgintunglor.sch.id</span>
             </div>
-            <div class="top-bar-social">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-emerald-400"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-emerald-400"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-emerald-400"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-emerald-400"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </div>
 
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-mosque"></i>
-                </div>
-                <div class="logo-text">
-                    <h1>MTs Wathoniyah</h1>
-                    <p>Madrasah Tsanawiyah Wathoniyah</p>
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="images.jpg" alt="Logo MTs Wathoniyah Gintung Lor" class="w-12 h-12 object-contain">
+                <div>
+                    <span class="text-xs font-semibold text-gray-500 block">YAYASAN TARBIYATUL WATHON</span>
+                    <h1 class="text-base md:text-lg font-bold text-blue-900 leading-tight">MTs WATHONIYAH GINTUNG LOR</h1>
                 </div>
             </div>
-            <nav>
-                <ul id="navMenu">
-                    <li><a href="#beranda">Beranda</a></li>
-                    <li><a href="#profil">Profil</a></li>
-                    <li><a href="#program">Program</a></li>
-                    <li><a href="#berita">Berita</a></li>
-                    <li><a href="#galeri">Galeri</a></li>
-                    <li><a href="#kontak">Kontak</a></li>
-                </ul>
+
+            <nav class="hidden lg:flex items-center space-x-6 font-medium text-sm">
+                <a href="#beranda" class="text-emerald-600 font-bold hover:text-emerald-500">BERANDA</a>
+                <a href="#profil" class="hover:text-emerald-600">PROFIL</a>
+                <a href="#akademik" class="hover:text-emerald-600">AKADEMIK</a>
+                <a href="#kegiatan" class="hover:text-emerald-600">KEGIATAN</a>
+                <a href="#galeri" class="hover:text-emerald-600">GALERI & UPLOAD</a>
+                <a href="#kontak" class="hover:text-emerald-600">KONTAK</a>
             </nav>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">
+
+            <div class="hidden lg:block">
+                <button onclick="toggleModal('loginModal')" class="bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center shadow transition">
+                    <i class="fas fa-user-lock mr-2"></i> LOGIN GURU
+                </button>
+            </div>
+
+            <button class="lg:hidden text-blue-900 text-2xl focus:outline-none" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t px-4 py-3 space-y-3 shadow-lg">
+            <a href="#beranda" class="block text-emerald-600 font-bold">BERANDA</a>
+            <a href="#profil" class="block hover:text-emerald-600">PROFIL</a>
+            <a href="#akademik" class="block hover:text-emerald-600">AKADEMIK</a>
+            <a href="#kegiatan" class="block hover:text-emerald-600">KEGIATAN</a>
+            <a href="#galeri" class="block hover:text-emerald-600">GALERI & UPLOAD</a>
+            <a href="#kontak" class="block hover:text-emerald-600">KONTAK</a>
+            <button onclick="toggleModal('loginModal')" class="w-full bg-blue-900 text-white py-2 rounded-full text-sm font-semibold">
+                <i class="fas fa-user-lock mr-2"></i> LOGIN GURU
             </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="beranda">
-        <div class="hero-content">
-            <h2>Selamat Datang di MTs Wathoniyah</h2>
-            <p>Membentuk Generasi Islami yang Cerdas, Berkarakter, dan Berprestasi</p>
-            <div class="hero-buttons">
-                <a href="#profil" class="btn btn-primary">
-                    <i class="fas fa-info-circle"></i> Tentang Kami
+    <section id="beranda" class="relative bg-blue-900 text-white py-24 px-4 bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80');">
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+            <span class="bg-emerald-500 text-white text-xs font-bold uppercase px-3 py-1 rounded-full">Selamat Datang</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">MTs Wathoniyah Gintung Lor</h2>
+            <p class="text-base md:text-xl text-gray-200">Membangun Generasi Islami yang Cerdas, Berkarakter, dan Berprestasi</p>
+            <div class="flex justify-center space-x-4 pt-4">
+                <a href="https://wa.me/6289665503999?text=Halo%20Admin,%20saya%20ingin%20bertanya%20tentang%20Pendaftaran%20Siswa%20Baru" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-full shadow-lg transition">
+                    PENDAFTARAN SISWA BARU
                 </a>
-                <a href="#kontak" class="btn btn-secondary">
-                    <i class="fas fa-envelope"></i> Hubungi Kami
+                <a href="#profil" class="border border-white hover:bg-white hover:text-blue-900 text-white font-bold px-6 py-3 rounded-full transition">
+                    JELAJAHI SEKOLAH
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Sambutan Section -->
-    <section class="sambutan">
-        <div class="container">
-            <div class="section-title">
-                <h2>Sambutan Kepala Madrasah</h2>
-                <div class="title-decoration"></div>
+    <section class="py-16 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h3 class="text-2xl md:text-3xl font-bold text-blue-900">UNGGULAN KAMI</h3>
+            <div class="w-16 h-1 bg-emerald-500 mx-auto mt-2"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow border border-gray-100 text-center hover:-translate-y-1 transition duration-300">
+                <div class="text-emerald-500 text-4xl mb-4"><i class="fas fa-quran"></i></div>
+                <h4 class="font-bold text-lg mb-2 text-blue-900">TAHFIDZ QUR'AN</h4>
+                <p class="text-sm text-gray-600">Program hafalan Al-Qur'an intensif dengan bimbingan ustadz berpengalaman.</p>
             </div>
-            <div class="sambutan-content">
-                <div class="sambutan-image">
-                    <div class="kepsek-photo">
-                        <i class="fas fa-user-tie"></i>
+            <div class="bg-white p-6 rounded-xl shadow border border-gray-100 text-center hover:-translate-y-1 transition duration-300">
+                <div class="text-emerald-500 text-4xl mb-4"><i class="fas fa-laptop-code"></i></div>
+                <h4 class="font-bold text-lg mb-2 text-blue-900">SAINS & TEKNOLOGI</h4>
+                <p class="text-sm text-gray-600">Fasilitas komputer dan laboratorium sains modern untuk siswa berprestasi.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow border border-gray-100 text-center hover:-translate-y-1 transition duration-300">
+                <div class="text-emerald-500 text-4xl mb-4"><i class="fas fa-globe"></i></div>
+                <h4 class="font-bold text-lg mb-2 text-blue-900">BAHASA ASING</h4>
+                <p class="text-sm text-gray-600">Penguasaan Bahasa Arab dan Bahasa Inggris aktif untuk komunikasi global.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow border border-gray-100 text-center hover:-translate-y-1 transition duration-300">
+                <div class="text-emerald-500 text-4xl mb-4"><i class="fas fa-trophy"></i></div>
+                <h4 class="font-bold text-lg mb-2 text-blue-900">SENI & OLAHRAGA</h4>
+                <p class="text-sm text-gray-600">Ekstrakurikuler beragam untuk menyalurkan bakat seni dan kebugaran jasmani.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeri" class="py-16 bg-gray-100 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl md:text-3xl font-bold text-blue-900">GALERI & UPLOAD FOTO</h3>
+                <div class="w-16 h-1 bg-emerald-500 mx-auto mt-2"></div>
+                <p class="text-gray-600 mt-2">Dokumentasi kegiatan sekolah & fitur unggah foto mandiri.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow max-w-xl mx-auto mb-12 border border-gray-200">
+                <h4 class="text-lg font-bold text-blue-900 mb-4 flex items-center"><i class="fas fa-cloud-upload-alt text-emerald-500 mr-2"></i> Unggah Foto Kegiatan Baru</h4>
+                <form id="uploadForm" onsubmit="handleUpload(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Pilih Gambar/Foto</label>
+                        <input type="file" id="imageInput" accept="image/*" required class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100">
                     </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan Foto</label>
+                        <input type="text" id="imageCaption" placeholder="Contoh: Kegiatan Pramuka MTs Wathoniyah" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm">
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded-lg transition text-sm">
+                        Upload ke Galeri
+                    </button>
+                </form>
+            </div>
+
+            <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=500&q=80" class="w-full h-48 object-cover" alt="Kegiatan 1">
+                    <div class="p-3 text-sm font-medium text-center text-gray-700">Suasana Belajar Mengajar di Kelas</div>
                 </div>
-                <div class="sambutan-text">
-                    <h3>Assalamu'alaikum Warahmatullahi Wabarakatuh</h3>
-                    <p class="jabatan">Drs. H. Ahmad Fauzi, M.Pd.I - Kepala Madrasah</p>
-                    <p>Puji syukur kita panjatkan ke hadirat Allah SWT yang telah memberikan rahmat dan karunia-Nya sehingga website MTs Wathoniyah ini dapat hadir di tengah-tengah kita.</p>
-                    <p>MTs Wathoniyah berkomitmen untuk memberikan pendidikan terbaik yang mengintegrasikan ilmu pengetahuan umum dengan nilai-nilai keislaman. Kami percaya bahwa setiap siswa memiliki potensi unik yang perlu dikembangkan secara optimal.</p>
-                    <p>Melalui website ini, kami berharap dapat memberikan informasi yang lengkap dan transparan kepada seluruh stakeholders madrasah. Mari bersama-sama kita wujudkan generasi yang cerdas, berkarakter, dan berakhlak mulia.</p>
-                    <p><strong>Wassalamu'alaikum Warahmatullahi Wabarakatuh</strong></p>
+                <div class="bg-white rounded-xl shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=500&q=80" class="w-full h-48 object-cover" alt="Kegiatan 2">
+                    <div class="p-3 text-sm font-medium text-center text-gray-700">Praktik Komputer Laboratorium</div>
+                </div>
+                <div class="bg-white rounded-xl shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=500&q=80" class="w-full h-48 object-cover" alt="Kegiatan 3">
+                    <div class="p-3 text-sm font-medium text-center text-gray-700">Kegiatan Ekstrakurikuler Siswa</div>
+                </div>
+                <div class="bg-white rounded-xl shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=500&q=80" class="w-full h-48 object-cover" alt="Kegiatan 4">
+                    <div class="p-3 text-sm font-medium text-center text-gray-700">Upacara Bendera Hari Senin</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Profil Section -->
-    <section id="profil">
-        <div class="container">
-            <div class="section-title">
-                <h2>Profil Madrasah</h2>
-                <div class="title-decoration"></div>
-                <p>Mengenal lebih dekat MTs Wathoniyah</p>
+    <footer id="kontak" class="bg-blue-950 text-white pt-16 pb-8 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div>
+                <h4 class="text-lg font-bold mb-4 text-emerald-400">Tentang Sekolah</h4>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    MTs Wathoniyah Gintung Lor di bawah naungan Yayasan Tarbiyatul Wathon berkomitmen mencetak generasi unggul yang menguasai ilmu agama dan teknologi.
+                </p>
             </div>
-            <div class="profil-grid">
-                <div class="profil-card fade-in">
-                    <div class="profil-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>Visi</h3>
-                    <p>"Terwujudnya peserta didik yang beriman, bertakwa, berakhlak mulia, cerdas, terampil, dan berwawasan global berdasarkan Al-Qur'an dan As-Sunnah."</p>
-                </div>
-                <div class="profil-card fade-in">
-                    <div class="profil-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Misi</h3>
-                    <ul>
-                        <li>Menanamkan keimanan dan ketakwaan melalui pembiasaan ibadah</li>
-                        <li>Mengembangkan potensi akademik dan non-akademik</li>
-                        <li>Membentuk karakter Islami yang kuat</li>
-                        <li>Menyiapkan siswa yang siap menghadapi tantangan global</li>
-                    </ul>
-                </div>
-                <div class="profil-card fade-in">
-                    <div class="profil-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Tujuan</h3>
-                    <ul>
-                        <li>Lulusan yang hafal minimal 3 juz Al-Qur'an</li>
-                        <li>Prestasi akademik di tingkat kabupaten/provinsi</li>
-                        <li>Siswa yang berakhlakul karimah</li>
-                        <li>Kemampuan teknologi dan bahasa asing</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Program Section -->
-    <section class="program" id="program">
-        <div class="container">
-            <div class="section-title">
-                <h2>Program Unggulan</h2>
-                <div class="title-decoration"></div>
-                <p>Program khusus untuk mengembangkan potensi siswa</p>
-            </div>
-            <div class="program-grid">
-                <div class="program-card fade-in">
-                    <div class="program-image">
-                        <i class="fas fa-quran"></i>
-                    </div>
-                    <div class="program-content">
-                        <h3>Tahfidz Al-Qur'an</h3>
-                        <p>Program hafalan Al-Qur'an dengan target minimal 3 juz selama 3 tahun, dibimbing oleh ustadz/ustadzah berpengalaman.</p>
-                    </div>
-                </div>
-                <div class="program-card fade-in">
-                    <div class="program-image">
-                        <i class="fas fa-flask"></i>
-                    </div>
-                    <div class="program-content">
-                        <h3>Sains & Teknologi</h3>
-                        <p>Laboratorium IPA dan komputer modern untuk mendukung pembelajaran sains dan teknologi informasi.</p>
-                    </div>
-                </div>
-                <div class="program-card fade-in">
-                    <div class="program-image">
-                        <i class="fas fa-language"></i>
-                    </div>
-                    <div class="program-content">
-                        <h3>Bahasa Asing</h3>
-                        <p>Pembelajaran Bahasa Arab dan Bahasa Inggris aktif dengan native speaker dan metode modern.</p>
-                    </div>
-                </div>
-                <div class="program-card fade-in">
-                    <div class="program-image">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="program-content">
-                        <h3>Seni & Olahraga</h3>
-                        <p>Ekstrakurikuler beragam: kaligrafi, hadroh, pencak silat, futsal, dan berbagai seni lainnya.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Berita Section -->
-    <section id="berita">
-        <div class="container">
-            <div class="section-title">
-                <h2>Berita & Pengumuman</h2>
-                <div class="title-decoration"></div>
-                <p>Informasi terbaru dari MTs Wathoniyah</p>
-            </div>
-            <div class="berita-grid">
-                <div class="berita-card fade-in">
-                    <div class="berita-image">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="berita-content">
-                        <div class="berita-date">
-                            <i class="fas fa-calendar"></i> 15 Agustus 2026
-                        </div>
-                        <h3>Juara 1 Olimpiade Sains Tingkat Kabupaten</h3>
-                        <p>Siswa MTs Wathoniyah berhasil meraih juara 1 dalam Olimpiade Sains Nasional tingkat kabupaten bidang IPA...</p>
-                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="berita-card fade-in">
-                    <div class="berita-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <i class="fas fa-mosque"></i>
-                    </div>
-                    <div class="berita-content">
-                        <div class="berita-date">
-                            <i class="fas fa-calendar"></i> 10 Agustus 2026
-                        </div>
-                        <h3>Peringatan Maulid Nabi Muhammad SAW</h3>
-                        <p>MTs Wathoniyah mengadakan peringatan Maulid Nabi dengan berbagai lomba islami dan pengajian akbar...</p>
-                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="berita-card fade-in">
-                    <div class="berita-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="berita-content">
-                        <div class="berita-date">
-                            <i class="fas fa-calendar"></i> 5 Agustus 2026
-                        </div>
-                        <h3>Penerimaan Peserta Didik Baru 2026/2027</h3>
-                        <p>Informasi lengkap mengenai PPDB tahun ajaran baru 2026/2027 telah dibuka. Segera daftarkan putra-putri Anda...</p>
-                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Galeri Section -->
-    <section class="galeri" id="galeri">
-        <div class="container">
-            <div class="section-title">
-                <h2>Galeri Kegiatan</h2>
-                <div class="title-decoration"></div>
-                <p>Dokumentasi aktivitas di MTs Wathoniyah</p>
-            </div>
-            <div class="galeri-grid">
-                <div class="galeri-item fade-in" data-title="Upacara Bendera">
-                    <i class="fas fa-flag"></i>
-                </div>
-                <div class="galeri-item fade-in" data-title="Kegiatan Belajar Mengajar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                    <i class="fas fa-book-reader"></i>
-                </div>
-                <div class="galeri-item fade-in" data-title="Praktikum IPA" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                    <i class="fas fa-flask"></i>
-                </div>
-                <div class="galeri-item fade-in" data-title="Ekstrakurikuler Hadroh" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                    <i class="fas fa-music"></i>
-                </div>
-                <div class="galeri-item fade-in" data-title="Lomba Tahfidz" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                    <i class="fas fa-quran"></i>
-                </div>
-                <div class="galeri-item fade-in" data-title="Study Tour" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
-                    <i class="fas fa-bus"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Kontak Section -->
-    <section id="kontak">
-        <div class="container">
-            <div class="section-title">
-                <h2>Hubungi Kami</h2>
-                <div class="title-decoration"></div>
-                <p>Kami siap menjawab pertanyaan Anda</p>
-            </div>
-            <div class="kontak-grid">
-                <div class="kontak-info">
-                    <div class="kontak-item">
-                        <div class="kontak-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="kontak-text">
-                            <h4>Alamat</h4>
-                            <p>Jl. Pendidikan No. 123, Desa Wathoniyah, Kec. Pembelajaran, Kab. Ilmu, Provinsi Jawa Barat 12345</p>
-                        </div>
-                    </div>
-                    <div class="kontak-item">
-                        <div class="kontak-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="kontak-text">
-                            <h4>Telepon</h4>
-                            <p>(021) 1234-5678<br>+62 812-3456-7890 (WhatsApp)</p>
-                        </div>
-                    </div>
-                    <div class="kontak-item">
-                        <div class="kontak-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="kontak-text">
-                            <h4>Email</h4>
-                            <p>info@mtswathoniyah.sch.id<br>ppdb@mtswathoniyah.sch.id</p>
-                        </div>
-                    </div>
-                    <div class="kontak-item">
-                        <div class="kontak-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="kontak-text">
-                            <h4>Jam Operasional</h4>
-                            <p>Senin - Jumat: 07.00 - 15.00 WIB<br>Sabtu: 07.00 - 12.00 WIB</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="kontak-form">
-                    <form onsubmit="handleSubmit(event)">
-                        <div class="form-group">
-                            <label>Nama Lengkap</label>
-                            <input type="text" placeholder="Masukkan nama Anda" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="Masukkan email Anda" required>
-                        </div>
-                        <div class="form-group">
-                            <label>No. Telepon</label>
-                            <input type="tel" placeholder="Masukkan nomor telepon">
-                        </div>
-                        <div class="form-group">
-                            <label>Pesan</label>
-                            <textarea placeholder="Tulis pesan Anda di sini..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">
-                            <i class="fas fa-paper-plane"></i> Kirim Pesan
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>MTs Wathoniyah</h3>
-                <p>Madrasah Tsanawiyah yang berkomitmen untuk membentuk generasi Islami yang cerdas, berkarakter, dan berprestasi.</p>
-                <div style="margin-top: 1rem;">
-                    <a href="#" style="margin-right: 1rem;"><i class="fab fa-facebook fa-lg"></i></a>
-                    <a href="#" style="margin-right: 1rem;"><i class="fab fa-instagram fa-lg"></i></a>
-                    <a href="#" style="margin-right: 1rem;"><i class="fab fa-youtube fa-lg"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp fa-lg"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Link Cepat</h3>
-                <ul>
-                    <li><a href="#profil">Profil Madrasah</a></li>
-                    <li><a href="#program">Program Unggulan</a></li>
-                    <li><a href="#berita">Berita Terbaru</a></li>
-                    <li><a href="#galeri">Galeri Kegiatan</a></li>
-                    <li><a href="#kontak">Kontak Kami</a></li>
+            <div>
+                <h4 class="text-lg font-bold mb-4 text-emerald-400">Kontak Kami</h4>
+                <ul class="text-sm space-y-2 text-gray-300">
+                    <li><i class="fas fa-phone mr-2 text-emerald-400"></i> +62 896-6550-3999</li>
+                    <li><i class="fas fa-envelope mr-2 text-emerald-400"></i> info@mtswathoniyahgintunglor.sch.id</li>
+                    <li><i class="fas fa-map-marker-alt mr-2 text-emerald-400"></i> Gintung Lor, Susukan, Cirebon, Jawa Barat</li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3>Informasi</h3>
-                <ul>
-                    <li><a href="#">PPDB 2026/2027</a></li>
-                    <li><a href="#">Kalender Akademik</a></li>
-                    <li><a href="#">E-Learning</a></li>
-                    <li><a href="#">Perpustakaan Digital</a></li>
-                    <li><a href="#">Alumni</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Kontak</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Jl. Pendidikan No. 123</p>
-                <p><i class="fas fa-phone"></i> (021) 1234-5678</p>
-                <p><i class="fas fa-envelope"></i> info@mtswathoniyah.sch.id</p>
+            <div>
+                <h4 class="text-lg font-bold mb-4 text-emerald-400">Media Sosial</h4>
+                <div class="flex space-x-3 text-lg">
+                    <a href="#" class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center hover:bg-emerald-500 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center hover:bg-emerald-500 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center hover:bg-emerald-500 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center hover:bg-emerald-500 transition"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 MTs Wathoniyah. All Rights Reserved. | Dibuat dengan <i class="fas fa-heart" style="color: #f5576c;"></i> untuk Pendidikan Indonesia</p>
+        <div class="border-t border-blue-900 text-center text-xs text-gray-400 pt-6">
+            © 2026 MTs Wathoniyah Gintung Lor. All Rights Reserved.
         </div>
     </footer>
 
+    <a href="https://wa.me/6289665503999?text=Halo%20Admin,%20saya%20ingin%20mendapatkan%20informasi%20lebih%20lanjut%20tentang%20MTs%20Wathoniyah%20Gintung%20Lor" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl text-3xl z-50 transition transform hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6 relative">
+            <button onclick="toggleModal('loginModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
+            <h3 class="text-xl font-bold text-blue-900 mb-4 text-center">Login Portal Guru</h3>
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">NIP / Username</label>
+                    <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-sm">
+                </div>
+                <button type="submit" class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded-lg transition text-sm">
+                    Masuk Dashboard
+                </button>
+            </form>
+        </div>
+    </div>
+
     <script>
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
         }
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    document.getElementById('navMenu').classList.remove('active');
-                }
-            });
-        });
-
-        // Form Submit Handler
-        function handleSubmit(event) {
-            event.preventDefault();
-            alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
-            event.target.reset();
+        // Toggle Modal Login Guru
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('hidden');
         }
 
-        // Scroll Animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Handle Login Simulasi
+        function handleLogin(e) {
+            e.preventDefault();
+            alert('Login berhasil! (Simulasi dashboard guru)');
+            toggleModal('loginModal');
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Header scroll effect
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
+        // Handle Upload Foto Dinamis ke Galeri
+        function handleUpload(e) {
+            e.preventDefault();
+            const fileInput = document.getElementById('imageInput');
+            const captionInput = document.getElementById('imageCaption');
             
-            if (currentScroll > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
-            } else {
-                header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const galleryGrid = document.getElementById('galleryGrid');
+                    const newCard = document.createElement('div');
+                    newCard.className = 'bg-white rounded-xl shadow overflow-hidden';
+                    newCard.innerHTML = `
+                        <img src="${e.target.result}" class="w-full h-48 object-cover" alt="Uploaded Image">
+                        <div class="p-3 text-sm font-medium text-center text-gray-700">${captionInput.value}</div>
+                    `;
+                    galleryGrid.prepend(newCard);
+                    alert('Foto berhasil diunggah ke galeri!');
+                    document.getElementById('uploadForm').reset();
+                }
+                reader.readAsDataURL(fileInput.files[0]);
             }
-            
-            lastScroll = currentScroll;
-        });
+        }
     </script>
 </body>
 </html>
