@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Foto - MTs Wathoniyah</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>MTs Wathoniyah</h1>
+    <p>Galeri Dokumentasi & Kegiatan</p>
+  </header>
+
+  <section class="upload-section">
+    <h2>Unggah Foto Baru</h2>
+    <div class="upload-box">
+      <input type="file" id="imageInput" accept="image/*">
+      <button onclick="uploadImage()">Unggah Foto</button>
+    </div>
+  </section>
+
+  <main class="gallery-container">
+    <h2>Koleksi Foto</h2>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item">
+        <img src="https://picsum.photos/400/300?random=1" alt="Kegiatan 1">
+      </div>
+      <div class="gallery-item">
+        <img src="https://picsum.photos/400/300?random=2" alt="Kegiatan 2">
+      </div>
+      <div class="gallery-item">
+        <img src="https://picsum.photos/400/300?random=3" alt="Kegiatan 3">
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
